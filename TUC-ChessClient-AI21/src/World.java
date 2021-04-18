@@ -115,16 +115,6 @@ public class World
 				
 				if(secondLetter.equals("P"))	// it is a pawn
 				{
-					// check if it can move towards the last row
-					if(i-1 == 0 && (Character.toString(board[i-1][j].charAt(0)).equals(" ") 
-							         || Character.toString(board[i-1][j].charAt(0)).equals("P")))
-					{
-						move = Integer.toString(i) + Integer.toString(j) + 
-						       Integer.toString(i-1) + Integer.toString(j);
-						
-						availableMoves.add(move);
-						continue;
-					}
 					
 					// check if it can move one vertical position ahead
 					firstLetter = Character.toString(board[i-1][j].charAt(0));
@@ -140,29 +130,25 @@ public class World
 					// check if it can move crosswise to the left
 					if(j!=0 && i!=0)
 					{
-						firstLetter = Character.toString(board[i-1][j-1].charAt(0));
-						
-						if(firstLetter.equals("W") || firstLetter.equals(" ") || firstLetter.equals("P"))
-							continue;
-						
-						move = Integer.toString(i) + Integer.toString(j) + 
-							   Integer.toString(i-1) + Integer.toString(j-1);
-						
-						availableMoves.add(move);
+						firstLetter = Character.toString(board[i-1][j-1].charAt(0));						
+						if(!(firstLetter.equals("W") || firstLetter.equals(" ") || firstLetter.equals("P"))) {
+							move = Integer.toString(i) + Integer.toString(j) + 
+									   Integer.toString(i-1) + Integer.toString(j-1);
+								
+							availableMoves.add(move);
+						}											
 					}
 					
 					// check if it can move crosswise to the right
 					if(j!=columns-1 && i!=0)
 					{
 						firstLetter = Character.toString(board[i-1][j+1].charAt(0));
-						
-						if(firstLetter.equals("W") || firstLetter.equals(" ") || firstLetter.equals("P"))
-							continue;
-						
-						move = Integer.toString(i) + Integer.toString(j) + 
-							   Integer.toString(i-1) + Integer.toString(j+1);
-						
-						availableMoves.add(move);
+						if(!(firstLetter.equals("W") || firstLetter.equals(" ") || firstLetter.equals("P"))) {
+							
+							move = Integer.toString(i) + Integer.toString(j) + 
+									   Integer.toString(i-1) + Integer.toString(j+1);							
+							availableMoves.add(move);
+						}
 					}
 				}
 				else if(secondLetter.equals("R"))	// it is a rook
@@ -334,16 +320,6 @@ public class World
 				
 				if(secondLetter.equals("P"))	// it is a pawn
 				{
-					// check if it is at the last row
-					if(i+1 == rows-1 && (Character.toString(board[i+1][j].charAt(0)).equals(" ")
-										  || Character.toString(board[i+1][j].charAt(0)).equals("P")))
-					{
-						move = Integer.toString(i) + Integer.toString(j) + 
-						       Integer.toString(i+1) + Integer.toString(j);
-						
-						availableMoves.add(move);
-						continue;
-					}
 					
 					// check if it can move one vertical position ahead
 					firstLetter = Character.toString(board[i+1][j].charAt(0));
@@ -361,13 +337,12 @@ public class World
 					{
 						firstLetter = Character.toString(board[i+1][j-1].charAt(0));
 						
-						if(firstLetter.equals("B") || firstLetter.equals(" ") || firstLetter.equals("P"))
-							continue;
-						
-						move = Integer.toString(i) + Integer.toString(j) + 
-							   Integer.toString(i+1) + Integer.toString(j-1);
-						
-						availableMoves.add(move);
+						if(!(firstLetter.equals("B") || firstLetter.equals(" ") || firstLetter.equals("P"))) {
+							move = Integer.toString(i) + Integer.toString(j) + 
+									   Integer.toString(i+1) + Integer.toString(j-1);
+								
+							availableMoves.add(move);
+						}																	
 					}
 					
 					// check if it can move crosswise to the right
@@ -375,13 +350,15 @@ public class World
 					{
 						firstLetter = Character.toString(board[i+1][j+1].charAt(0));
 						
-						if(firstLetter.equals("B") || firstLetter.equals(" ") || firstLetter.equals("P"))
-							continue;
+						if(!(firstLetter.equals("B") || firstLetter.equals(" ") || firstLetter.equals("P"))) {
+							move = Integer.toString(i) + Integer.toString(j) + 
+									   Integer.toString(i+1) + Integer.toString(j+1);
+								
+							availableMoves.add(move);
+						}
+							
 						
-						move = Integer.toString(i) + Integer.toString(j) + 
-							   Integer.toString(i+1) + Integer.toString(j+1);
 						
-						availableMoves.add(move);
 					}
 				}
 				else if(secondLetter.equals("R"))	// it is a rook
