@@ -92,7 +92,7 @@ public class World
 		nBranches += availableMoves.size();
 		
 		//return this.selectRandomAction();
-		return new ActionPerformer(availableMoves).toString();
+		return new ActionPerformer(availableMoves, board).toString();
 	}
 	
 	private void whiteMoves()
