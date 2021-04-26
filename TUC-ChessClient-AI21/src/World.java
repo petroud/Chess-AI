@@ -91,7 +91,8 @@ public class World
 		nTurns++;
 		nBranches += availableMoves.size();
 		
-		return this.selectRandomAction();
+		//return this.selectRandomAction();
+		return new ActionPerformer(availableMoves).toString();
 	}
 	
 	private void whiteMoves()
@@ -509,6 +510,7 @@ public class World
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private String selectRandomAction()
 	{		
 		Random ran = new Random();
