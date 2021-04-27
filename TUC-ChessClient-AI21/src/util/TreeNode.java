@@ -14,6 +14,8 @@ public class TreeNode {
 			return;
 		}
 		
+		state = new String[initalState.length][initalState[0].length];
+		
 		calculateChildren();
 	}
 	
