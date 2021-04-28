@@ -1,3 +1,4 @@
+package core;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -20,7 +21,7 @@ public class Client
 	private String myName = "client";
 	// private int counterMsg = 0;		optional use
 	private String receivedMsg = "";
-	private int myColor = 0;
+	public static int myColor = 0;
 	private World world = null;
 	private int scoreWhite = 0;
 	private int scoreBlack = 0;
