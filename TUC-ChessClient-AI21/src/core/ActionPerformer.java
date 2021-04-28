@@ -38,9 +38,8 @@ public class ActionPerformer {
 		
 		System.out.println(tree);
 		
-		System.exit(1);
 		
-		return null;
+		return selectRandomAction();
 	}
 	
 	@Override
