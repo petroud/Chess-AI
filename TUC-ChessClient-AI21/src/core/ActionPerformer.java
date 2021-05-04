@@ -6,7 +6,7 @@ import util.*;
 
 public class ActionPerformer {
 	
-	public final static Algorithms PERFORMED = Algorithms.ALPHA_BETA_PRUNING;
+	public final static Algorithms PERFORMED = Algorithms.MONE_CARLO_TREE_SEARCH;
 	
 	public ActionPerformer(ArrayList<String> availableMoves, String[][] board) {
 		this.availableMoves = availableMoves;
@@ -19,6 +19,9 @@ public class ActionPerformer {
 		case ALPHA_BETA_PRUNING:
 			bestMove = alphaBetaPruning(board);
 			break;
+		case MONE_CARLO_TREE_SEARCH:
+			bestMove = moneCarloTreeSearch();
+			break;
 		case RANDOM:
 			bestMove = selectRandomAction();
 			break;
@@ -29,6 +32,11 @@ public class ActionPerformer {
 	
 	private final ArrayList<String> availableMoves;
 	private final String bestMove;
+	
+	private String moneCarloTreeSearch() {
+		
+		return selectRandomAction();
+	}
 	
 	private String selectRandomAction() {		
 		Random ran = new Random();
