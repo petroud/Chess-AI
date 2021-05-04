@@ -6,7 +6,7 @@ import util.*;
 
 public class ActionPerformer {
 	
-	public final static Algorithms PERFORMED = Algorithms.MINIMAX;
+	public final static Algorithms PERFORMED = Algorithms.ALPHA_BETA_PRUNING;
 	
 	public ActionPerformer(ArrayList<String> availableMoves, String[][] board) {
 		this.availableMoves = availableMoves;
@@ -15,6 +15,9 @@ public class ActionPerformer {
 		
 		case MINIMAX:
 			bestMove = minimax(board);
+			break;
+		case ALPHA_BETA_PRUNING:
+			bestMove = alphaBetaPruning(board);
 			break;
 		case RANDOM:
 			bestMove = selectRandomAction();
@@ -31,6 +34,18 @@ public class ActionPerformer {
 		Random ran = new Random();
 		int x = ran.nextInt(availableMoves.size());
 		return availableMoves.get(x);
+	}
+	
+	private String alphaBetaPruning(String[][] board) {
+		ABPruningTree tree = new ABPruningTree(board, 4);
+		
+		if (tree.getBestMove() == null) {
+			throw new Error();
+		}
+		
+		System.out.println(tree.getBestMove());
+		
+		return tree.getBestMove();
 	}
 	
 	private String minimax(String[][] board) {
