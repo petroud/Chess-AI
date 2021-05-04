@@ -5,6 +5,37 @@ import core.World;
 
 public class Simulator {
 	
+	public static int calculateScore(String[][] board, String move) {
+		int x1, y1, x2, y2;
+		x1 = Integer.parseInt(move.charAt(0) + "");
+		y1 = Integer.parseInt(move.charAt(1) + "");
+		x2 = Integer.parseInt(move.charAt(2) + "");
+		y2 = Integer.parseInt(move.charAt(3) + "");
+		
+		if (board[x2][y2].contentEquals("")) {
+			return 0;
+		}
+		else if (board[x2][y2].length() < 2) {
+			return 0;
+		}
+		else if (y2 == 6 || y2 == 0 && board[x1][y1].charAt(1) == 'P') {
+			return 1;
+		}
+		else if (board[x2][y2].charAt(1) == 'R') {
+			// Rook
+			
+			return 3;
+		}
+		else if (board[x2][y2].charAt(1) == 'P') {
+			return 1;
+		}
+		else if (board[x2][y2].charAt(1) == 'K') {
+			return 8;
+		}
+		
+		return 0;
+	}
+	
 	public static ArrayList<String> calculateAvailableMoves(String[][] board, String player) {
 		
 		ArrayList<String> availableMoves = new ArrayList<String>();

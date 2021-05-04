@@ -34,12 +34,12 @@ public class ActionPerformer {
 	}
 	
 	private String minimax(String[][] board) {
-		FutureTree tree = new FutureTree(board, 1);
+		FutureTree tree = new FutureTree(board, 4, Client.myColor == 0 ? "PW" : "PB");
 		
-		System.out.println(tree);
-		
-		
-		return selectRandomAction();
+		if (tree.getBestMove() == null) {
+			throw new Error();
+		}
+		return tree.getBestMove();
 	}
 	
 	@Override
