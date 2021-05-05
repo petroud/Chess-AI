@@ -1,4 +1,5 @@
 package core;
+import mcts.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,7 +21,7 @@ public class ActionPerformer {
 			bestMove = alphaBetaPruning(board);
 			break;
 		case MONE_CARLO_TREE_SEARCH:
-			bestMove = moneCarloTreeSearch();
+			bestMove = moneCarloTreeSearch(board);
 			break;
 		case RANDOM:
 			bestMove = selectRandomAction();
@@ -33,9 +34,11 @@ public class ActionPerformer {
 	private final ArrayList<String> availableMoves;
 	private final String bestMove;
 	
-	private String moneCarloTreeSearch() {
+	private String moneCarloTreeSearch(String[][] board) {
 		
-		return selectRandomAction();
+		MCTSTree tree = new MCTSTree(board, Client.myColor == 0 ? "PW" : "PB", 100);
+				
+		return tree.mcts();
 	}
 	
 	private String selectRandomAction() {		

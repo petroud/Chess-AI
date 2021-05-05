@@ -15,22 +15,24 @@ public class Simulator {
 		if (board[x2][y2].contentEquals("")) {
 			return 0;
 		}
-		else if (board[x2][y2].length() < 2) {
-			return 0;
+		else if (board[x2][y2].length() == 2) {
+			if (board[x2][y2].charAt(1) == 'K') {
+				return 8;
+			}
+			else if (board[x2][y2].charAt(1) == 'R') {
+				// Rook
+				
+				return 3;
+			}
+			else if (y2 == 6 || y2 == 0 && board[x1][y1].charAt(1) == 'P') {
+				return 1;
+			}
+			else if (board[x2][y2].charAt(1) == 'P') {
+				return 1;
+			}
 		}
-		else if (y2 == 6 || y2 == 0 && board[x1][y1].charAt(1) == 'P') {
+		else if (board[x2][y2].length() == 1) {
 			return 1;
-		}
-		else if (board[x2][y2].charAt(1) == 'R') {
-			// Rook
-			
-			return 3;
-		}
-		else if (board[x2][y2].charAt(1) == 'P') {
-			return 1;
-		}
-		else if (board[x2][y2].charAt(1) == 'K') {
-			return 8;
 		}
 		
 		return 0;
