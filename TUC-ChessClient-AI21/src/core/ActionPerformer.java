@@ -7,12 +7,12 @@ import util.*;
 
 public class ActionPerformer {
 	
-	public final static Algorithms PERFORMED = Algorithms.MONTE_CARLO_TREE_SEARCH;
+	public final static Algorithms ALG_TO_USE = Algorithms.MONTE_CARLO_TREE_SEARCH;
 	
 	public ActionPerformer(ArrayList<String> availableMoves, String[][] board) {
 		this.availableMoves = availableMoves;
 		
-		switch (PERFORMED) {
+		switch (ALG_TO_USE) {
 		
 		case MINIMAX:
 			bestMove = minimax(board);
