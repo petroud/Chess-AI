@@ -7,7 +7,7 @@ import util.*;
 
 public class ActionPerformer {
 	
-	public final static Algorithms ALG_TO_USE = Algorithms.MINIMAX;
+	public final static Algorithms ALG_TO_USE = Algorithms.MONTE_CARLO_TREE_SEARCH;
 	
 	public ActionPerformer(ArrayList<String> availableMoves, String[][] board) {
 		
@@ -38,7 +38,7 @@ public class ActionPerformer {
 	
 	private String monteCarloTreeSearch(String[][] board) {
 		
-		MCTSTree tree = new MCTSTree(board, Client.myColor == 0 ? "PW" : "PB", 100);
+		MCTSTree tree = new MCTSTree(board, Client.myColor == 0 ? "PW" : "PB", 2000);
 				
 		return tree.mcts();
 	}

@@ -24,7 +24,6 @@ public class Simulator {
 		double valueNow = evaluatePosition(typeNow);
 		double valueGoal = evaluatePosition(typeGoal);
 		
-		
 		val = valueGoal;
 		
 		return val;		

@@ -122,6 +122,8 @@ public class ABPruningNode {
 				}
 				
 			});
+			
+			bestMove = min.move;
 		}
 	}
 	
