@@ -7,7 +7,7 @@ import util.*;
 
 public class ActionPerformer {
 	
-	public final static Algorithms PERFORMED = Algorithms.MONE_CARLO_TREE_SEARCH;
+	public final static Algorithms PERFORMED = Algorithms.MONTE_CARLO_TREE_SEARCH;
 	
 	public ActionPerformer(ArrayList<String> availableMoves, String[][] board) {
 		this.availableMoves = availableMoves;
@@ -20,8 +20,8 @@ public class ActionPerformer {
 		case ALPHA_BETA_PRUNING:
 			bestMove = alphaBetaPruning(board);
 			break;
-		case MONE_CARLO_TREE_SEARCH:
-			bestMove = moneCarloTreeSearch(board);
+		case MONTE_CARLO_TREE_SEARCH:
+			bestMove = monteCarloTreeSearch(board);
 			break;
 		case RANDOM:
 			bestMove = selectRandomAction();
@@ -34,7 +34,7 @@ public class ActionPerformer {
 	private final ArrayList<String> availableMoves;
 	private final String bestMove;
 	
-	private String moneCarloTreeSearch(String[][] board) {
+	private String monteCarloTreeSearch(String[][] board) {
 		
 		MCTSTree tree = new MCTSTree(board, Client.myColor == 0 ? "PW" : "PB", 100);
 				
