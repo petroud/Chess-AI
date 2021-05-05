@@ -102,6 +102,26 @@ public class ABPruningNode {
 					break;
 				}
 			}
+			
+			if (children == null || children.isEmpty()) {
+				return;
+			}
+			ABPruningNode min = Collections.min(children, new Comparator<ABPruningNode>() {
+
+				@Override
+				public int compare(ABPruningNode t1, ABPruningNode t2) {
+					if (t1.value > t2.value) {
+						return 1;
+					}
+					else if (t1.value == t2.value) {
+						return 0;
+					}
+					else {
+						return -1;
+					}
+				}
+				
+			});
 		}
 	}
 	
