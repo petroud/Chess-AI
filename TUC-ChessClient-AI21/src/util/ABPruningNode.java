@@ -8,7 +8,7 @@ import core.Client;
 
 public class ABPruningNode {
 
-	public ABPruningNode(String[][] initalState, String move, int depth, int maxDepth, String who, int alpha, int beta) {
+	public ABPruningNode(String[][] initalState, String move, int depth, int maxDepth, String who, double alpha, double beta) {
 		this.move = move;
 		if (move != null) {
 			int x1 = Integer.parseInt(Character.toString(move.charAt(0)));
@@ -46,7 +46,7 @@ public class ABPruningNode {
 				ABPruningNode newNode = new ABPruningNode(state, mv, depth+1, maxDepth, who.contentEquals("PB") ? "PW" : "PB", alpha, beta);
 				
 				children.add(newNode);
-				int ret = newNode.value;
+				double ret = newNode.value;
 				
 				value = Math.max(value, ret);
 				
@@ -92,7 +92,7 @@ public class ABPruningNode {
 				ABPruningNode newNode = new ABPruningNode(state, mv, depth+1, maxDepth, who.contentEquals("PB") ? "PW" : "PB", alpha, beta);
 				
 				children.add(newNode);
-				int ret = newNode.value;
+				double ret = newNode.value;
 				
 				value = Math.min(value, ret);
 				
@@ -106,7 +106,7 @@ public class ABPruningNode {
 	}
 	
 	ArrayList<ABPruningNode> children;
-	private int value;
+	private double value;
 	String[][] state;
 	
 	String bestMove;

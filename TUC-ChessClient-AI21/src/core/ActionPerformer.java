@@ -7,7 +7,7 @@ import util.*;
 
 public class ActionPerformer {
 	
-	public final static Algorithms ALG_TO_USE = Algorithms.MONTE_CARLO_TREE_SEARCH;
+	public final static Algorithms ALG_TO_USE = Algorithms.MINIMAX;
 	
 	public ActionPerformer(ArrayList<String> availableMoves, String[][] board) {
 		this.availableMoves = availableMoves;
@@ -54,8 +54,8 @@ public class ActionPerformer {
 			throw new Error();
 		}
 		
-		System.out.println(tree.getBestMove());
 		
+				
 		return tree.getBestMove();
 	}
 	

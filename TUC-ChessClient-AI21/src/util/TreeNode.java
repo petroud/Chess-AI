@@ -102,7 +102,7 @@ public class TreeNode {
 		//System.out.println(moves);
 	}
 	
-	int evaluationScore;
+	double evaluationScore;
 	final int depth;
 	String[][] state;
 	private String move;

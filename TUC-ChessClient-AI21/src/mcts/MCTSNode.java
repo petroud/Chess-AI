@@ -42,7 +42,7 @@ public class MCTSNode {
 	}
 	
 	final String player;
-	int evaluationScore;
+	double evaluationScore;
 	String[][] state;
 	final String move;
 	int visits;
