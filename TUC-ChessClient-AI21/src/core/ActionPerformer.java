@@ -10,8 +10,10 @@ public class ActionPerformer {
 	public final static Algorithms ALG_TO_USE = Algorithms.MINIMAX;
 	
 	public ActionPerformer(ArrayList<String> availableMoves, String[][] board) {
-		this.availableMoves = availableMoves;
 		
+		
+		this.availableMoves = availableMoves;
+	
 		switch (ALG_TO_USE) {
 		
 		case MINIMAX:

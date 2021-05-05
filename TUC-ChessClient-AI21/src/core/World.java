@@ -2,6 +2,9 @@ package core;
 import java.util.ArrayList;
 import java.util.Random;
 
+import util.Point;
+import util.Simulator;
+
 
 public class World
 {
@@ -72,6 +75,7 @@ public class World
 			board[rows/2][j] = "P";
 		
 		availableMoves = new ArrayList<String>();
+		//Simulator.calculateNeighbors(board);
 	}
 	
 	public void setMyColor(int myColor)
@@ -82,6 +86,7 @@ public class World
 	public String selectAction()
 	{
 		availableMoves = new ArrayList<String>();
+		
 				
 		if(myColor == 0)		// I am the white player
 			this.whiteMoves();

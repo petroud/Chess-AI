@@ -1,61 +1,83 @@
 package util;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-import core.Client;
 import core.World;
 
 public class Simulator {
 	
+	public static HashMap<String,List<String>> neighbours;
+	
 	public static double calculateScore(String[][] board, String move) {
 		double val = 0.0;
 		
-		for (String[] row : board) {
-			for (String col : row) {
-				if (col.contentEquals("")) continue;
-				
-				if (col.length() == 1) {
-					val += 0.9;
-					continue;
-				}
-								
-				int mult;
-				
-				if (Client.myColor == 0) {
-					if (col.charAt(0) == 'B') {
-						mult = 1;
-					}
-					else {
-						mult = -1;
-					}
-				}
-				else {
-					if (col.charAt(0) == 'W') { 
-						mult = 1;
-					}
-					else {
-						mult = -1;
-					}
-				}
-				
-				switch (col.charAt(1)) {
-				
-				case 'P':
-					val += mult;
-					break;
-				
-				case 'R':
-					val += 3*mult;
-					break;
-					
-				case 'K':
-					val += 8*mult;
-					break;
-				}
-			}
-		}
-	    return val;
+		int rnow = Character.getNumericValue(move.charAt(0));
+		int cnow = Character.getNumericValue(move.charAt(1));
+
+		int rgoal = Character.getNumericValue(move.charAt(2));
+		int cgoal = Character.getNumericValue(move.charAt(3));
+		
+		String typeNow = board[rnow][cnow];
+		String typeGoal = board[rgoal][cgoal];
+		
+		double valueNow = evaluatePosition(typeNow);
+		double valueGoal = evaluatePosition(typeGoal);
+		
+		
+		val = valueGoal;
+		
+		return val;		
 	}
 	
+	private static double evaluatePosition(String content) {
+		
+		if(content.length()<2) {
+			if(content.contentEquals("P")) {
+				return 0.9;
+			}else {
+				return 0;
+			}
+		}else if(content.length()==2){
+			
+			if(content.charAt(1) == 'P') {
+				return 1;
+			}else if(content.charAt(1) == 'R') {
+				return 3;
+			}else if(content.charAt(1) == 'K') {
+				return 8;
+			}else {
+				return 0;
+			}
+		}else {
+			return 0;
+		}
+	}
+	
+	private static List<String> findNeighbours(int  r, int c, String[][] board) {
+		List<String> neighs = new ArrayList<String>();
+		for (int nr = Math.max(0, r - 1); nr <= Math.min(r + 1, board.length - 1); ++nr){
+		    for (int nc = Math.max(0, c - 1); nc <= Math.min(c + 1, board[0].length - 1); ++nc) {
+		        if (!(nr==r && nc==c))  {  
+		        	neighs.add(""+nr+""+nc);
+		        }
+		    }
+		}
+	    return neighs;
+	}
+	
+	public static void calculateNeighbors(String[][] board) {
+		 neighbours = new HashMap<String,List<String>>();
+		 
+		 for (int row = 0; row < board.length; row++) { 
+			 for (int col = 0; col < board[row].length; col++) { 
+		          List<String> ns = findNeighbours(row,col,board);
+		          neighbours.put(""+row+""+col, ns);
+		     } 
+		 }
+
+	}
+
 	public static ArrayList<String> calculateAvailableMoves(String[][] board, String player) {
 		
 		ArrayList<String> availableMoves = new ArrayList<String>();

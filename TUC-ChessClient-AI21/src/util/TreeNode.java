@@ -72,7 +72,6 @@ public class TreeNode {
 			});
 			
 			evaluationScore = max.evaluationScore;
-			
 			minimaxBestMove = max.move;
 			
 		}
@@ -97,6 +96,7 @@ public class TreeNode {
 			});
 			
 			evaluationScore = min.evaluationScore;
+			minimaxBestMove = min.move;
 		}
 		
 		//System.out.println(moves);
